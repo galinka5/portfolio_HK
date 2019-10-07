@@ -1,0 +1,18 @@
+function onSpotStops(){
+		if (turn == OPPONENT){
+			if (canMakeStep(PLAYER)) {
+				timer = TIME_TO_STEP;
+				turn = PLAYER
+			}
+			else{
+				update_handler({message:"You cannot make step!"});
+				turn = OPPONENT;
+				setTimeout(makeStepOppenent, 700);
+			}
+		} else {
+			turn  = OPPONENT;
+			setTimeout(makeStepOppenent, 700);
+		}
+		if (active_data) checkNeighbours(active_data[0], active_data[1], active_data[2]);
+		updateGameField();
+}
